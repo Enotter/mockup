@@ -31,7 +31,7 @@
       </a>
       <form class="search"><input type="text" placeholder="作家名・作品名・キーワードで探す" /><button type="submit"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20 L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></form>
       <nav class="header-icons">
-        <a href="mypage.html" class="icon-btn"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>お気に入り</span></a>
+        <a href="favorites.html" class="icon-btn"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>お気に入り</span></a>
         <a href="mypage.html" class="icon-btn"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>マイページ</span></a>
         <a href="cart.html" class="icon-btn cart"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 4h3l3 12h10l3-9H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg><span>カート</span><span class="badge">3</span></a>
       </nav>
@@ -57,18 +57,18 @@
       <!-- Sidebar -->
       <aside class="mypage-sidebar">
         <ul>
-          <li><a href="#"><span class="ico">🏠</span>ダッシュボード</a></li>
+          <li><a href="mypage.html"><span class="ico">🏠</span>ダッシュボード</a></li>
           <li><a href="#" class="active"><span class="ico">📦</span>注文履歴</a></li>
-          <li><a href="#"><span class="ico">♡</span>お気に入り作品</a></li>
+          <li><a href="favorites.html"><span class="ico">♡</span>お気に入り作品</a></li>
           <li><a href="#"><span class="ico">★</span>フォロー作家</a></li>
           <li><a href="#"><span class="ico">✎</span>レビュー履歴</a></li>
           <li><a href="#"><span class="ico">🎫</span>クーポン</a></li>
-          <li><a href="#"><span class="ico">📨</span>メッセージ <span style="margin-left:auto;background:var(--accent-red);color:white;border-radius:999px;padding:1px 8px;font-size:10px;">3</span></a></li>
+          <li><a href="messages.html"><span class="ico">📨</span>メッセージ <span style="margin-left:auto;background:var(--accent-red);color:white;border-radius:999px;padding:1px 8px;font-size:10px;">3</span></a></li>
           <hr />
-          <li><a href="#"><span class="ico">👤</span>プロフィール設定</a></li>
-          <li><a href="#"><span class="ico">📍</span>お届け先管理</a></li>
+          <li><a href="mypage-profile.html"><span class="ico">👤</span>プロフィール設定</a></li>
+          <li><a href="mypage-addresses.html"><span class="ico">📍</span>お届け先管理</a></li>
           <li><a href="#"><span class="ico">💳</span>お支払い方法</a></li>
-          <li><a href="#"><span class="ico">⚙</span>各種設定</a></li>
+          <li><a href="mypage-profile.html"><span class="ico">⚙</span>各種設定</a></li>
           <hr />
           <li><a href="#" style="color:var(--accent-red);"><span class="ico">↪</span>ログアウト</a></li>
         </ul>
@@ -80,7 +80,7 @@
         <div class="panel">
           <h2>最近のご注文 <a href="#">すべて見る →</a></h2>
 
-          <div class="order-row">
+          <div class="order-row" onclick="location.href='order-detail.html'" style="cursor:pointer">
             <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=200&q=80" alt="" />
             <div class="info">
               <span class="date">2026.05.15 ・ 注文番号 #T8920</span>
@@ -91,7 +91,7 @@
             <span class="price-col">¥4,500</span>
           </div>
 
-          <div class="order-row">
+          <div class="order-row" onclick="location.href='order-detail.html'" style="cursor:pointer">
             <img src="https://images.unsplash.com/photo-1518049362265-d5b2a6b00b37?auto=format&fit=crop&w=200&q=80" alt="" />
             <div class="info">
               <span class="date">2026.05.10 ・ 注文番号 #T8842</span>
@@ -102,7 +102,7 @@
             <span class="price-col">¥8,000</span>
           </div>
 
-          <div class="order-row">
+          <div class="order-row" onclick="location.href='order-detail.html'" style="cursor:pointer">
             <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=200&q=80" alt="" />
             <div class="info">
               <span class="date">2026.04.28 ・ 注文番号 #T8771</span>
@@ -113,7 +113,7 @@
             <span class="price-col">¥9,800</span>
           </div>
 
-          <div class="order-row">
+          <div class="order-row" onclick="location.href='order-detail.html'" style="cursor:pointer">
             <img src="https://images.unsplash.com/photo-1602523498311-b9006d8ca96f?auto=format&fit=crop&w=200&q=80" alt="" />
             <div class="info">
               <span class="date">2026.04.15 ・ 注文番号 #T8612</span>
@@ -134,17 +134,17 @@
               <span class="name">atelier mori</span>
               <span class="meta">★4.9 ・ 216作品</span>
             </a>
-            <a href="#" class="fav-artist-card" style="text-decoration:none;">
+            <a href="artist.html" class="fav-artist-card" style="text-decoration:none;">
               <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=200&q=80')"></div>
               <span class="name">陶房 つきの</span>
               <span class="meta">★4.8 ・ 140作品</span>
             </a>
-            <a href="#" class="fav-artist-card" style="text-decoration:none;">
+            <a href="artist.html" class="fav-artist-card" style="text-decoration:none;">
               <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=200&q=80')"></div>
               <span class="name">木工房 ひだまり</span>
               <span class="meta">★4.9 ・ 87作品</span>
             </a>
-            <a href="#" class="fav-artist-card" style="text-decoration:none;">
+            <a href="artist.html" class="fav-artist-card" style="text-decoration:none;">
               <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80')"></div>
               <span class="name">布もの店 こよみ</span>
               <span class="meta">★4.7 ・ 92作品</span>

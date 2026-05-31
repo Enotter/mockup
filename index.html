@@ -34,9 +34,9 @@
       </div>
       <div class="utility-right">
         <a href="#">ヘルプ</a>
-        <a href="#">出品する</a>
-        <a href="#">ログイン</a>
-        <a href="#">新規登録</a>
+        <a href="artist-signup.html">出品する</a>
+        <a href="login.html">ログイン</a>
+        <a href="signup.html">新規登録</a>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
   <!-- ===== Header ===== -->
   <header class="header">
     <div class="container header-inner">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <span class="logo-mark">
           <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
             <circle cx="24" cy="24" r="22" fill="#FAF6EE" stroke="#5C3A21" stroke-width="2"/>
@@ -67,15 +67,15 @@
       </form>
 
       <nav class="header-icons">
-        <a href="#" class="icon-btn" aria-label="お気に入り">
+        <a href="favorites.html" class="icon-btn" aria-label="お気に入り">
           <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
           <span>お気に入り</span>
         </a>
-        <a href="#" class="icon-btn" aria-label="マイページ">
+        <a href="mypage.html" class="icon-btn" aria-label="マイページ">
           <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           <span>マイページ</span>
         </a>
-        <a href="#" class="icon-btn cart" aria-label="カート">
+        <a href="cart.html" class="icon-btn cart" aria-label="カート">
           <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 4h3l3 12h10l3-9H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg>
           <span>カート</span>
           <span class="badge">2</span>
@@ -115,8 +115,8 @@
           ひとつひとつ手仕事で生まれた作品をお届けします。
         </p>
         <div class="hero-cta">
-          <a href="#" class="btn btn-primary">作品をさがす</a>
-          <a href="#" class="btn btn-ghost">作家をさがす →</a>
+          <a href="products.html" class="btn btn-primary">作品をさがす</a>
+          <a href="products.html" class="btn btn-ghost">作家をさがす →</a>
         </div>
         <div class="hero-stats">
           <div><strong>3,200+</strong><span>登録作家</span></div>
@@ -149,32 +149,32 @@
       </header>
 
       <div class="category-grid">
-        <a href="#" class="cat-card">
+        <a href="products.html" class="cat-card">
           <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?auto=format&fit=crop&w=600&q=80')"></div>
           <span class="cat-name">アクセサリー</span>
           <span class="cat-count">12,480 点</span>
         </a>
-        <a href="#" class="cat-card">
+        <a href="products.html" class="cat-card">
           <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=600&q=80')"></div>
           <span class="cat-name">陶器・うつわ</span>
           <span class="cat-count">8,920 点</span>
         </a>
-        <a href="#" class="cat-card">
+        <a href="products.html" class="cat-card">
           <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1606293459209-c8ce9fe9c2c5?auto=format&fit=crop&w=600&q=80')"></div>
           <span class="cat-name">布・テキスタイル</span>
           <span class="cat-count">6,310 点</span>
         </a>
-        <a href="#" class="cat-card">
+        <a href="products.html" class="cat-card">
           <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1611486212557-88be5ff6f941?auto=format&fit=crop&w=600&q=80')"></div>
           <span class="cat-name">木工・家具</span>
           <span class="cat-count">4,150 点</span>
         </a>
-        <a href="#" class="cat-card">
+        <a href="products.html" class="cat-card">
           <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=600&q=80')"></div>
           <span class="cat-name">レザー・革小物</span>
           <span class="cat-count">3,840 点</span>
         </a>
-        <a href="#" class="cat-card">
+        <a href="products.html" class="cat-card">
           <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1602874801006-d1f1b8d4ba9e?auto=format&fit=crop&w=600&q=80')"></div>
           <span class="cat-name">キャンドル・石けん</span>
           <span class="cat-count">2,670 点</span>
@@ -193,7 +193,7 @@
       </header>
 
       <div class="product-grid">
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <span class="product-badge new">NEW</span>
             <button class="fav-btn" aria-label="お気に入りに追加">
@@ -209,7 +209,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <span class="product-badge popular">人気</span>
             <button class="fav-btn" aria-label="お気に入りに追加">
@@ -225,7 +225,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <span class="product-badge sale">SALE</span>
             <button class="fav-btn" aria-label="お気に入りに追加">
@@ -241,7 +241,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <button class="fav-btn" aria-label="お気に入りに追加">
               <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
@@ -256,7 +256,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <span class="product-badge new">NEW</span>
             <button class="fav-btn" aria-label="お気に入りに追加">
@@ -272,7 +272,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <span class="product-badge popular">人気</span>
             <button class="fav-btn" aria-label="お気に入りに追加">
@@ -288,7 +288,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <button class="fav-btn" aria-label="お気に入りに追加">
               <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
@@ -303,7 +303,7 @@
           </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" onclick="location.href='product-detail.html'" style="cursor:pointer">
           <div class="product-img-wrap">
             <span class="product-badge sale">SALE</span>
             <button class="fav-btn" aria-label="お気に入りに追加">
@@ -321,7 +321,7 @@
       </div>
 
       <div class="see-more">
-        <a href="#" class="btn btn-outline">もっと見る（85,200点）→</a>
+        <a href="products.html" class="btn btn-outline">もっと見る（85,200点）→</a>
       </div>
     </div>
   </section>
@@ -355,7 +355,7 @@
             <div><strong>★4.9</strong><span>平均評価</span></div>
             <div><strong>1,840</strong><span>フォロワー</span></div>
           </div>
-          <a href="#" class="btn btn-light">作家ページを見る →</a>
+          <a href="artist.html" class="btn btn-light">作家ページを見る →</a>
         </div>
       </div>
     </div>
@@ -371,19 +371,19 @@
       </header>
 
       <div class="story-grid">
-        <a href="#" class="story-card">
+        <a href="products.html" class="story-card">
           <div class="story-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80')"></div>
           <span class="story-cat">うつわのある暮らし</span>
           <h3>毎日のごはんが愛おしくなる、うつわの選び方</h3>
           <span class="story-date">2026.05.10</span>
         </a>
-        <a href="#" class="story-card">
+        <a href="products.html" class="story-card">
           <div class="story-img" style="background-image:url('https://images.unsplash.com/photo-1531947386298-1b14d8caca91?auto=format&fit=crop&w=700&q=80')"></div>
           <span class="story-cat">作家インタビュー</span>
           <h3>真鍮を打つ音と、森のしずけさ。— 金森 朔さんを訪ねて</h3>
           <span class="story-date">2026.05.03</span>
         </a>
-        <a href="#" class="story-card">
+        <a href="products.html" class="story-card">
           <div class="story-img" style="background-image:url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=80')"></div>
           <span class="story-cat">ものづくり辞典</span>
           <h3>知っておきたい、木のうつわのお手入れのこと</h3>

@@ -374,12 +374,12 @@
           </div>
 
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
-            <button class="btn btn-primary" style="width:100%;">変更を保存する</button>
-            <button class="btn btn-outline" style="width:100%;font-size:12px;">非公開にする</button>
+            <button class="btn btn-primary" style="width:100%;" onclick="location.href='product-manage.html'">変更を保存する</button>
+            <button class="btn btn-outline" style="width:100%;font-size:12px;" onclick="location.href='product-manage.html'">非公開にする</button>
           </div>
 
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--paper-edge);">
-            <button style="width:100%;padding:8px;background:none;border:0;color:var(--accent-red);font-size:12px;cursor:pointer;">この商品を削除する</button>
+            <button style="width:100%;padding:8px;background:none;border:0;color:var(--accent-red);font-size:12px;cursor:pointer;" onclick="if(confirm('削除しますか？'))location.href='product-manage.html'">この商品を削除する</button>
             <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:6px;line-height:1.6;">削除すると元に戻せません。<br />関連する注文履歴は保持されます。</p>
           </div>
         </div>
