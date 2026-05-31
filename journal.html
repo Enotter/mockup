@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ジャーナル — Enotter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Journal Hero ===== */
+    .journal-hero {
+      background: linear-gradient(135deg, #5C3A21, #7D4E2D);
+      padding: 80px 0 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .journal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px);
+    }
+    .journal-hero-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--accent-gold);
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .journal-hero h1 {
+      font-family: var(--font-mincho);
+      font-size: 48px;
+      font-weight: 700;
+      color: #FAF6EE;
+      margin: 0 0 16px;
+      line-height: 1.3;
+      position: relative;
+    }
+    .journal-hero p {
+      font-size: 15px;
+      color: rgba(250,246,238,0.75);
+      margin: 0;
+      position: relative;
+    }
+
+    /* ===== Tab Navigation ===== */
+    .journal-tabs {
+      background: var(--paper);
+      border-bottom: 1px solid var(--paper-edge);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(60,40,20,0.06);
+    }
+    .journal-tabs .container {
+      display: flex;
+      gap: 0;
+    }
+    .tab-item {
+      padding: 16px 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-mid);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .tab-item:hover {
+      color: var(--wood-dark);
+      background: rgba(92,58,33,0.04);
+    }
+    .tab-item.active {
+      color: var(--wood-dark);
+      border-bottom-color: var(--wood-dark);
+      font-weight: 700;
+    }
+
+    /* ===== Journal Grid ===== */
+    .journal-section {
+      padding: 56px 0 80px;
+    }
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .journal-card {
+      background: var(--paper);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s, transform 0.25s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .journal-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .journal-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      background: #E8D9C5;
+    }
+    .journal-card-body {
+      padding: 18px 20px 20px;
+    }
+    .journal-category-badge {
+      display: inline-block;
+      background: var(--accent-gold);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+    .journal-card-title {
+      font-family: var(--font-mincho);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+    .journal-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .journal-card-author {
+      font-size: 12px;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+    .journal-card-date {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-left: auto;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--wood-dark);
+      color: rgba(250,246,238,0.65);
+      padding: 48px 0 24px;
+      font-size: 13px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(250,246,238,0.12);
+    }
+    .footer-brand .logo-jp {
+      font-family: var(--font-mincho);
+      font-size: 22px;
+      color: var(--paper);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .footer-brand p { margin: 0; line-height: 1.8; }
+    .footer-col h4 { font-size: 12px; letter-spacing: 0.2em; color: var(--paper); font-weight: 700; margin: 0 0 12px; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: rgba(250,246,238,0.65); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent-gold); }
+    .footer-bottom { padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom small { font-size: 11px; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Demo Nav ===== -->
+  <div class="demo-nav"><div class="container"><span class="demo-label">— MOCKUP PAGES —</span><nav class="demo-links">
+    <span class="demo-group">買い手</span>
+    <a href="index.html">トップ</a><a href="products.html">商品一覧</a><a href="search.html">検索結果</a><a href="product-detail.html">商品詳細</a><a href="cart.html">カート</a><a href="checkout.html">購入手続き</a><a href="order-complete.html">注文完了</a><a href="order-detail.html">注文詳細</a><a href="favorites.html">お気に入り</a><a href="review-post.html">レビュー投稿</a><a href="mypage.html">マイページ</a><a href="mypage-orders.html">注文履歴</a><a href="mypage-profile.html">プロフィール編集</a><a href="mypage-addresses.html">住所帳</a><a href="mypage-following.html">フォロー作家</a><a href="messages.html">メッセージ</a><a href="artists.html">作家一覧</a><a href="artist.html">作家ページ</a><a href="artist-products-list.html">作家作品一覧</a><a href="artist-reviews-list.html">作家レビュー一覧</a><a href="journal.html" class="current">ジャーナル</a><a href="journal-detail.html">ジャーナル詳細</a>
+    <span class="demo-group">認証</span>
+    <a href="login.html">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html">メール認証</a><a href="password-reset.html">パスワード再設定</a>
+    <span class="demo-group">作家</span>
+    <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-order-detail.html">受注詳細</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a><a href="artist-shop-edit.html">ショップ設定</a>
+    <span class="demo-group">作家登録フロー</span><a href="artist-signup-id.html">本人確認</a><a href="artist-signup-bank.html">振込先登録</a><a href="artist-signup-terms.html">規約同意</a><span class="demo-group">作家管理</span><a href="artist-pending-orders.html">未対応注文</a><a href="artist-reviews.html">レビュー一覧</a><a href="artist-notices.html">お知らせ</a><span class="demo-group">運営</span><a href="admin-dashboard.html">管理ダッシュボード</a><a href="admin-artist-review.html">作家審査</a><a href="admin-users.html">ユーザー管理</a><a href="admin-products.html">商品モデレーション</a><a href="admin-journal.html">ジャーナル管理</a><a href="admin-features.html">特集・バナー管理</a><a href="admin-payouts.html">精算管理</a><a href="admin-inquiries.html">お問い合わせ</a><a href="admin-analytics.html">分析・レポート</a><span class="demo-group">規約・その他</span>
+    <a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="tokushoho.html">特商法</a><a href="about.html">会社概要</a><a href="faq.html">FAQ</a><a href="contact.html">お問い合わせ</a><a href="404.html">404</a>
+  </nav></div></div>
+
+  <!-- ===== Utility Bar ===== -->
+  <div class="utility-bar">
+    <div class="container">
+      <div class="utility-left">
+        <span>送料無料キャンペーン実施中（5,000円以上のお買い物で）</span>
+      </div>
+      <div class="utility-right">
+        <a href="#">ヘルプ</a>
+        <a href="artist-signup.html">出品する</a>
+        <a href="login.html">ログイン</a>
+        <a href="signup.html">新規登録</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" fill="#FAF6EE" stroke="#5C3A21" stroke-width="2"/>
+            <path d="M14 30 Q24 14 34 30" stroke="#5C3A21" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="24" cy="22" r="2.5" fill="#B5523F"/>
+            <path d="M18 34 L30 34" stroke="#5C3A21" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 3"/>
+          </svg>
+        </span>
+        <span class="logo-text">
+          <span class="logo-jp">Enotter</span>
+        </span>
+      </a>
+
+      <form class="search">
+        <input type="text" placeholder="作家名・作品名・キーワードで探す" />
+        <button type="submit" aria-label="検索">
+          <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20 L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </form>
+
+      <nav class="header-icons">
+        <a href="favorites.html" class="icon-btn" aria-label="お気に入り">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>お気に入り</span>
+        </a>
+        <a href="mypage.html" class="icon-btn" aria-label="マイページ">
+          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>マイページ</span>
+        </a>
+        <a href="cart.html" class="icon-btn cart" aria-label="カート">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 4h3l3 12h10l3-9H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg>
+          <span>カート</span>
+          <span class="badge">2</span>
+        </a>
+      </nav>
+    </div>
+
+    <nav class="category-nav">
+      <div class="container">
+        <ul>
+          <li><a href="products.html">アクセサリー</a></li>
+          <li><a href="products.html">陶器・うつわ</a></li>
+          <li><a href="products.html">布・テキスタイル</a></li>
+          <li><a href="products.html">木工・家具</a></li>
+          <li><a href="products.html">レザー・革小物</a></li>
+          <li><a href="products.html">アート・絵画</a></li>
+          <li><a href="products.html">キャンドル・石けん</a></li>
+          <li><a href="products.html">食品・お菓子</a></li>
+          <li><a href="products.html" class="sale">セール</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="journal-hero">
+    <div class="container">
+      <span class="journal-hero-label">— Enotter Journal —</span>
+      <h1>手仕事と、生きる。</h1>
+      <p>作家たちの物語、ものを作ることの意味。</p>
+    </div>
+  </section>
+
+  <!-- ===== Tab Nav ===== -->
+  <div class="journal-tabs">
+    <div class="container">
+      <a href="#" class="tab-item active">すべて</a>
+      <a href="#" class="tab-item">作家インタビュー</a>
+      <a href="#" class="tab-item">作り方・工程</a>
+      <a href="#" class="tab-item">素材について</a>
+      <a href="#" class="tab-item">特集</a>
+    </div>
+  </div>
+
+  <!-- ===== Journal Grid ===== -->
+  <section class="journal-section">
+    <div class="container">
+      <div class="journal-grid">
+
+        <!-- 1 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=800&q=80" alt="真鍮という素材と向き合って20年" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作家インタビュー</span>
+            <h2 class="journal-card-title">真鍮という素材と向き合って20年</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">atelier mori</span>
+              <span class="journal-card-date">2026.05.28</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=80" alt="陶芸の土選びから始まる、うつわ作り" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作り方・工程</span>
+            <h2 class="journal-card-title">陶芸の土選びから始まる、うつわ作り</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">陶房 つきの</span>
+              <span class="journal-card-date">2026.05.24</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80" alt="長野の山から届ける、木工のこと" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作家インタビュー</span>
+            <h2 class="journal-card-title">長野の山から届ける、木工のこと</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">木工房 ひだまり</span>
+              <span class="journal-card-date">2026.05.20</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1603905027272-4e47b0a03e8e?auto=format&fit=crop&w=800&q=80" alt="ミツロウキャンドルの作り方、全工程" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作り方・工程</span>
+            <h2 class="journal-card-title">ミツロウキャンドルの作り方、全工程</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">Candle nico</span>
+              <span class="journal-card-date">2026.05.15</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="革の種類と選び方 — 入門ガイド" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">素材について</span>
+            <h2 class="journal-card-title">革の種類と選び方 — 入門ガイド</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">編集部</span>
+              <span class="journal-card-date">2026.05.10</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 6 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?auto=format&fit=crop&w=800&q=80" alt="梅雨を楽しむ手仕事 特集" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">特集</span>
+            <h2 class="journal-card-title">梅雨を楽しむ手仕事 特集</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">編集部</span>
+              <span class="journal-card-date">2026.06.01</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 7 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="藍染めの色を引き出す水の話" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">素材について</span>
+            <h2 class="journal-card-title">藍染めの色を引き出す水の話</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">藍染工房 青空</span>
+              <span class="journal-card-date">2026.05.05</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 8 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=800&q=80" alt="ガラス作家が語る、光と透明感" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作家インタビュー</span>
+            <h2 class="journal-card-title">ガラス作家が語る、光と透明感</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">glass studio hana</span>
+              <span class="journal-card-date">2026.04.28</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 9 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=800&q=80" alt="刺繍糸100本の色の話" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">素材について</span>
+            <h2 class="journal-card-title">刺繍糸100本の色の話</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">布もの店 こよみ</span>
+              <span class="journal-card-date">2026.04.20</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 10 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1513201099705-a9746072f1db?auto=format&fit=crop&w=800&q=80" alt="ギフト包装のこだわりと、受け取る人への想い" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">特集</span>
+            <h2 class="journal-card-title">ギフト包装のこだわりと、受け取る人への想い</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">編集部</span>
+              <span class="journal-card-date">2026.04.15</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 11 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="若手陶芸家が語る、伝統と革新" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作家インタビュー</span>
+            <h2 class="journal-card-title">若手陶芸家が語る、伝統と革新</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">陶工房 椿</span>
+              <span class="journal-card-date">2026.04.10</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 12 -->
+        <a href="journal-detail.html" class="journal-card">
+          <img class="journal-card-img" src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=800&q=80" alt="木のスプーン一本を作るのにかかる時間" />
+          <div class="journal-card-body">
+            <span class="journal-category-badge">作り方・工程</span>
+            <h2 class="journal-card-title">木のスプーン一本を作るのにかかる時間</h2>
+            <div class="journal-card-meta">
+              <span class="journal-card-author">木工房 匠</span>
+              <span class="journal-card-date">2026.04.05</span>
+            </div>
+          </div>
+        </a>
+
+      </div><!-- /journal-grid -->
+
+      <!-- Pagination -->
+      <div style="display:flex;justify-content:center;align-items:center;gap:8px;margin-top:56px;">
+        <span style="padding:8px 14px;background:var(--wood-dark);color:#FAF6EE;border-radius:4px;font-size:13px;font-weight:700;">1</span>
+        <a href="#" style="padding:8px 14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;font-size:13px;color:var(--text-mid);">2</a>
+        <a href="#" style="padding:8px 14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;font-size:13px;color:var(--text-mid);">3</a>
+        <span style="font-size:13px;color:var(--text-light);">…</span>
+        <a href="#" style="padding:8px 14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;font-size:13px;color:var(--text-mid);">8</a>
+        <a href="#" style="padding:8px 14px;background:var(--paper);border:1px solid var(--paper-edge);border-radius:4px;font-size:13px;color:var(--text-mid);">次へ →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-jp">Enotter</span>
+          <p>つくり手と暮らしをつなぐ、<br />ハンドメイドマーケット。</p>
+        </div>
+        <div class="footer-col">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="products.html">商品を探す</a></li>
+            <li><a href="artists.html">作家を探す</a></li>
+            <li><a href="journal.html">ジャーナル</a></li>
+            <li><a href="artist-signup.html">出品する</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>サポート</h4>
+          <ul>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+            <li><a href="terms.html">利用規約</a></li>
+            <li><a href="privacy.html">プライバシー</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="tokushoho.html">特商法表記</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>© 2026 Enotter, Inc. All rights reserved.</small>
+        <small>MOCKUP — NOT FOR PRODUCTION USE</small>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
