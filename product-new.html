@@ -16,8 +16,8 @@
     <span class="demo-group">認証</span>
     <a href="login.html">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html">メール認証</a><a href="password-reset.html">パスワード再設定</a>
     <span class="demo-group">作家</span>
-    <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html" class="current">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a>
-    <span class="demo-group">規約</span>
+    <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html" class="current">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a><a href="artist-shop-edit.html">ショップ設定</a>
+    <span class="demo-group">作家登録フロー</span><a href="artist-signup-id.html">本人確認</a><a href="artist-signup-bank.html">振込先登録</a><a href="artist-signup-terms.html">規約同意</a><span class="demo-group">作家管理</span><a href="artist-pending-orders.html">未対応注文</a><a href="artist-reviews.html">レビュー一覧</a><a href="artist-notices.html">お知らせ</a><span class="demo-group">規約</span>
     <a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="tokushoho.html">特商法</a>
   </nav></div></div>
 
@@ -283,10 +283,36 @@
         <!-- ギフト対応 -->
         <div class="form-card">
           <h3>ギフト対応</h3>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <label class="toggle-switch"><input type="checkbox" checked /><span class="switch-track"></span><span style="font-size:13px;">ラッピングに対応する（+¥200）</span></label>
-            <label class="toggle-switch"><input type="checkbox" checked /><span class="switch-track"></span><span style="font-size:13px;">メッセージカードに対応する（無料）</span></label>
-            <label class="toggle-switch"><input type="checkbox" /><span class="switch-track"></span><span style="font-size:13px;">熨斗に対応する（+¥100）</span></label>
+          <p class="form-card-desc">購入者へのギフト対応は<strong>作家ご自身</strong>で行っていただきます。プラットフォームは梱包・発送に関与しません。対応可能なサービスをONにして、追加料金を設定してください。</p>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:center;gap:16px;">
+              <label class="toggle-switch" style="flex-shrink:0;"><input type="checkbox" checked /><span class="switch-track"></span></label>
+              <div style="flex:1;">
+                <span style="font-size:13px;font-weight:500;">ラッピング</span>
+                <span style="font-size:11px;color:var(--text-mid);display:block;">作家が手作業でラッピングします</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-mid);">
+                <span>+¥</span><input type="number" value="200" style="width:70px;padding:5px 6px;border:1px solid var(--paper-edge);border-radius:4px;font-size:12px;" />
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;">
+              <label class="toggle-switch" style="flex-shrink:0;"><input type="checkbox" checked /><span class="switch-track"></span></label>
+              <div style="flex:1;">
+                <span style="font-size:13px;font-weight:500;">メッセージカード同梱</span>
+                <span style="font-size:11px;color:var(--text-mid);display:block;">購入者からのメッセージを同梱します</span>
+              </div>
+              <span style="font-size:12px;color:var(--text-mid);">無料</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;">
+              <label class="toggle-switch" style="flex-shrink:0;"><input type="checkbox" /><span class="switch-track"></span></label>
+              <div style="flex:1;">
+                <span style="font-size:13px;font-weight:500;">のし対応</span>
+                <span style="font-size:11px;color:var(--text-mid);display:block;">お祝い・贈答用ののし紙を添付します</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-mid);">
+                <span>+¥</span><input type="number" value="100" style="width:70px;padding:5px 6px;border:1px solid var(--paper-edge);border-radius:4px;font-size:12px;" />
+              </div>
+            </div>
           </div>
         </div>
 
