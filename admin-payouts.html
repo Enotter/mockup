@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>精算管理 — Enotter Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="demo-nav"><div class="container"><span class="demo-label">— MOCKUP PAGES —</span><nav class="demo-links">
+    <span class="demo-group">買い手</span>
+    <a href="index.html">トップ</a><a href="products.html">商品一覧</a><a href="product-detail.html">商品詳細</a><a href="cart.html">カート</a><a href="checkout.html">購入手続き</a><a href="order-complete.html">注文完了</a><a href="order-detail.html">注文詳細</a><a href="favorites.html">お気に入り</a><a href="review-post.html">レビュー投稿</a><a href="mypage.html">マイページ</a><a href="mypage-profile.html">プロフィール編集</a><a href="mypage-addresses.html">住所帳</a><a href="messages.html">メッセージ</a><a href="artists.html">作家一覧</a><a href="artist.html">作家ページ</a><a href="artist-products-list.html">作家作品一覧</a><a href="artist-reviews-list.html">作家レビュー一覧</a>
+    <span class="demo-group">認証</span>
+    <a href="login.html">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html">メール認証</a><a href="password-reset.html">パスワード再設定</a>
+    <span class="demo-group">作家</span>
+    <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a><a href="artist-shop-edit.html">ショップ設定</a>
+    <span class="demo-group">作家登録フロー</span><a href="artist-signup-id.html">本人確認</a><a href="artist-signup-bank.html">振込先登録</a><a href="artist-signup-terms.html">規約同意</a><span class="demo-group">作家管理</span><a href="artist-pending-orders.html">未対応注文</a><a href="artist-reviews.html">レビュー一覧</a><a href="artist-notices.html">お知らせ</a><span class="demo-group">規約</span>
+    <a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="tokushoho.html">特商法</a>
+    <span class="demo-group">運営</span>
+    <a href="admin-dashboard.html">管理ダッシュボード</a><a href="admin-artist-review.html">作家審査</a><a href="admin-users.html">ユーザー管理</a><a href="admin-products.html">商品モデレーション</a><a href="admin-journal.html">ジャーナル管理</a><a href="admin-features.html">特集・バナー管理</a><a href="admin-payouts.html" class="current">精算管理</a><a href="admin-inquiries.html">お問い合わせ</a><a href="admin-analytics.html">分析・レポート</a>
+  </nav></div></div>
+
+  <header style="background:#2C1A0E;color:#FAF6EE;padding:12px 0;">
+    <div class="container" style="display:flex;align-items:center;gap:24px;">
+      <a href="admin-dashboard.html" style="display:flex;gap:10px;align-items:center;color:#FAF6EE;text-decoration:none;">
+        <svg viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="#FAF6EE" stroke-width="2"/><path d="M14 30 Q24 14 34 30" stroke="#FAF6EE" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="24" cy="22" r="2.5" fill="#D4B896"/></svg>
+        <span style="font-family:'Zen Old Mincho',serif;font-size:18px;font-weight:700;">Enotter</span>
+        <span style="font-size:10px;background:#B5523F;color:#fff;padding:2px 8px;border-radius:4px;letter-spacing:0.1em;">ADMIN</span>
+      </a>
+      <nav style="margin-left:auto;display:flex;gap:20px;font-size:13px;">
+        <a href="admin-dashboard.html" style="color:rgba(250,246,238,0.7);">ダッシュボード</a>
+        <a href="admin-artist-review.html" style="color:rgba(250,246,238,0.7);">作家審査</a>
+        <a href="admin-users.html" style="color:rgba(250,246,238,0.7);">ユーザー</a>
+        <a href="admin-products.html" style="color:rgba(250,246,238,0.7);">商品</a>
+        <a href="admin-journal.html" style="color:rgba(250,246,238,0.7);">ジャーナル</a>
+        <a href="admin-payouts.html" style="color:#FAF6EE;font-weight:700;">精算</a>
+        <a href="admin-analytics.html" style="color:rgba(250,246,238,0.7);">分析</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mvp-page">
+    <div class="container">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+        <div>
+          <span style="font-family:var(--font-hand);color:var(--accent-gold);font-size:13px;">— 運営管理 —</span>
+          <h1 style="font-family:var(--font-mincho);font-size:28px;color:var(--text-dark);margin-top:4px;">売上・精算管理</h1>
+        </div>
+        <div style="font-size:13px;color:var(--text-light);">対象月：<strong style="color:var(--text-dark);">2026年5月</strong></div>
+      </div>
+
+      <!-- サマリカード -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px;">
+        <div class="kpi-card">
+          <span class="kpi-label">精算対象作家数</span>
+          <span class="kpi-value">28<span style="font-size:14px;color:var(--text-light);"> 名</span></span>
+          <span class="kpi-delta">振込待ち 22 / 保留 6</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">精算総額</span>
+          <span class="kpi-value" style="font-size:22px;">¥3,456,000</span>
+          <span class="kpi-delta">手数料控除前</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">手数料総額（10%）</span>
+          <span class="kpi-value" style="font-size:22px;">¥345,600</span>
+          <span class="kpi-delta up">プラットフォーム収益</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">振込済み額（今月）</span>
+          <span class="kpi-value" style="font-size:22px;">¥0</span>
+          <span class="kpi-delta">6/30 振込予定</span>
+        </div>
+      </div>
+
+      <!-- タブ -->
+      <div style="display:flex;gap:4px;margin-bottom:16px;border-bottom:2px solid var(--paper-edge);">
+        <a href="admin-payouts.html" style="padding:10px 20px;font-size:13px;font-weight:700;color:var(--accent-red);border-bottom:2px solid var(--accent-red);margin-bottom:-2px;text-decoration:none;">振込待ち <span style="background:var(--accent-red);color:#fff;font-size:10px;padding:1px 7px;border-radius:999px;margin-left:4px;">22</span></a>
+        <a href="#" style="padding:10px 20px;font-size:13px;color:var(--text-mid);text-decoration:none;">振込済み</a>
+        <a href="#" style="padding:10px 20px;font-size:13px;color:var(--text-mid);text-decoration:none;">保留 <span style="background:var(--paper-edge);color:var(--text-mid);font-size:10px;padding:1px 7px;border-radius:999px;margin-left:4px;">6</span></a>
+      </div>
+
+      <!-- 一括振込ボタン -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <span style="font-size:13px;color:var(--text-mid);"><input type="checkbox" style="margin-right:6px;accent-color:var(--wood-dark);" />全て選択</span>
+        <button class="btn btn-primary" style="font-size:13px;">選択した作家に振込処理</button>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" style="accent-color:var(--wood-dark);" /></th>
+            <th>作家名</th>
+            <th>当月売上</th>
+            <th>手数料率</th>
+            <th>手数料額</th>
+            <th>振込額</th>
+            <th>振込先銀行</th>
+            <th>ステータス</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;">atelier mori</td>
+            <td style="font-weight:700;">¥184,200</td>
+            <td style="font-size:12px;color:var(--text-mid);">10%</td>
+            <td style="font-size:12px;color:var(--accent-red);">−¥18,420</td>
+            <td style="font-weight:700;color:var(--wood-dark);">¥165,780</td>
+            <td style="font-size:11px;color:var(--text-mid);">三菱UFJ銀行 渋谷支店</td>
+            <td><span class="status-badge new">振込待ち</span></td>
+            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;">陶工房 椿</td>
+            <td style="font-weight:700;">¥298,000</td>
+            <td style="font-size:12px;color:var(--text-mid);">10%</td>
+            <td style="font-size:12px;color:var(--accent-red);">−¥29,800</td>
+            <td style="font-weight:700;color:var(--wood-dark);">¥268,200</td>
+            <td style="font-size:11px;color:var(--text-mid);">岐阜銀行 多治見支店</td>
+            <td><span class="status-badge new">振込待ち</span></td>
+            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;">布工房 沙織</td>
+            <td style="font-weight:700;">¥122,400</td>
+            <td style="font-size:12px;color:var(--text-mid);">10%</td>
+            <td style="font-size:12px;color:var(--accent-red);">−¥12,240</td>
+            <td style="font-weight:700;color:var(--wood-dark);">¥110,160</td>
+            <td style="font-size:11px;color:var(--text-mid);">ゆうちょ銀行 四国支店</td>
+            <td><span class="status-badge new">振込待ち</span></td>
+            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;">木工房 匠</td>
+            <td style="font-weight:700;">¥210,000</td>
+            <td style="font-size:12px;color:var(--text-mid);">10%</td>
+            <td style="font-size:12px;color:var(--accent-red);">−¥21,000</td>
+            <td style="font-weight:700;color:var(--wood-dark);">¥189,000</td>
+            <td style="font-size:11px;color:var(--text-mid);">静岡銀行 浜松支店</td>
+            <td><span class="status-badge new">振込待ち</span></td>
+            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;">glass studio hana</td>
+            <td style="font-weight:700;">¥88,000</td>
+            <td style="font-size:12px;color:var(--text-mid);">10%</td>
+            <td style="font-size:12px;color:var(--accent-red);">−¥8,800</td>
+            <td style="font-weight:700;color:var(--wood-dark);">¥79,200</td>
+            <td style="font-size:11px;color:var(--text-mid);">沖縄銀行 那覇支店</td>
+            <td><span class="status-badge new">振込待ち</span></td>
+            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;">藍染工房 青空</td>
+            <td style="font-weight:700;">¥156,500</td>
+            <td style="font-size:12px;color:var(--text-mid);">10%</td>
+            <td style="font-size:12px;color:var(--accent-red);">−¥15,650</td>
+            <td style="font-weight:700;color:var(--wood-dark);">¥140,850</td>
+            <td style="font-size:11px;color:var(--text-mid);">徳島銀行 徳島支店</td>
+            <td><span class="status-badge new">振込待ち</span></td>
+            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+          </tr>
+          <tr style="background:rgba(238,238,238,0.3);">
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;color:var(--text-mid);">キャンドル工房 光</td>
+            <td style="font-weight:700;color:var(--text-mid);">¥42,000</td>
+            <td style="font-size:12px;color:var(--text-light);">10%</td>
+            <td style="font-size:12px;color:var(--text-light);">−¥4,200</td>
+            <td style="font-weight:700;color:var(--text-mid);">¥37,800</td>
+            <td style="font-size:11px;color:var(--text-light);">未登録</td>
+            <td><span class="status-badge cancelled">保留</span></td>
+            <td><div class="row-actions"><button>詳細確認</button></div></td>
+          </tr>
+          <tr style="background:rgba(238,238,238,0.3);">
+            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-weight:700;color:var(--text-mid);">縫い人 さくら</td>
+            <td style="font-weight:700;color:var(--text-mid);">¥64,800</td>
+            <td style="font-size:12px;color:var(--text-light);">10%</td>
+            <td style="font-size:12px;color:var(--text-light);">−¥6,480</td>
+            <td style="font-weight:700;color:var(--text-mid);">¥58,320</td>
+            <td style="font-size:11px;color:var(--text-light);">口座名義不一致</td>
+            <td><span class="status-badge cancelled">保留</span></td>
+            <td><div class="row-actions"><button>詳細確認</button></div></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</body>
+</html>

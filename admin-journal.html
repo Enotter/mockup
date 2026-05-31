@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ジャーナル管理 — Enotter Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="demo-nav"><div class="container"><span class="demo-label">— MOCKUP PAGES —</span><nav class="demo-links">
+    <span class="demo-group">買い手</span>
+    <a href="index.html">トップ</a><a href="products.html">商品一覧</a><a href="product-detail.html">商品詳細</a><a href="cart.html">カート</a><a href="checkout.html">購入手続き</a><a href="order-complete.html">注文完了</a><a href="order-detail.html">注文詳細</a><a href="favorites.html">お気に入り</a><a href="review-post.html">レビュー投稿</a><a href="mypage.html">マイページ</a><a href="mypage-profile.html">プロフィール編集</a><a href="mypage-addresses.html">住所帳</a><a href="messages.html">メッセージ</a><a href="artists.html">作家一覧</a><a href="artist.html">作家ページ</a><a href="artist-products-list.html">作家作品一覧</a><a href="artist-reviews-list.html">作家レビュー一覧</a>
+    <span class="demo-group">認証</span>
+    <a href="login.html">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html">メール認証</a><a href="password-reset.html">パスワード再設定</a>
+    <span class="demo-group">作家</span>
+    <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a><a href="artist-shop-edit.html">ショップ設定</a>
+    <span class="demo-group">作家登録フロー</span><a href="artist-signup-id.html">本人確認</a><a href="artist-signup-bank.html">振込先登録</a><a href="artist-signup-terms.html">規約同意</a><span class="demo-group">作家管理</span><a href="artist-pending-orders.html">未対応注文</a><a href="artist-reviews.html">レビュー一覧</a><a href="artist-notices.html">お知らせ</a><span class="demo-group">規約</span>
+    <a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="tokushoho.html">特商法</a>
+    <span class="demo-group">運営</span>
+    <a href="admin-dashboard.html">管理ダッシュボード</a><a href="admin-artist-review.html">作家審査</a><a href="admin-users.html">ユーザー管理</a><a href="admin-products.html">商品モデレーション</a><a href="admin-journal.html" class="current">ジャーナル管理</a><a href="admin-features.html">特集・バナー管理</a><a href="admin-payouts.html">精算管理</a><a href="admin-inquiries.html">お問い合わせ</a><a href="admin-analytics.html">分析・レポート</a>
+  </nav></div></div>
+
+  <header style="background:#2C1A0E;color:#FAF6EE;padding:12px 0;">
+    <div class="container" style="display:flex;align-items:center;gap:24px;">
+      <a href="admin-dashboard.html" style="display:flex;gap:10px;align-items:center;color:#FAF6EE;text-decoration:none;">
+        <svg viewBox="0 0 48 48" width="32" height="32"><circle cx="24" cy="24" r="22" fill="none" stroke="#FAF6EE" stroke-width="2"/><path d="M14 30 Q24 14 34 30" stroke="#FAF6EE" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="24" cy="22" r="2.5" fill="#D4B896"/></svg>
+        <span style="font-family:'Zen Old Mincho',serif;font-size:18px;font-weight:700;">Enotter</span>
+        <span style="font-size:10px;background:#B5523F;color:#fff;padding:2px 8px;border-radius:4px;letter-spacing:0.1em;">ADMIN</span>
+      </a>
+      <nav style="margin-left:auto;display:flex;gap:20px;font-size:13px;">
+        <a href="admin-dashboard.html" style="color:rgba(250,246,238,0.7);">ダッシュボード</a>
+        <a href="admin-artist-review.html" style="color:rgba(250,246,238,0.7);">作家審査</a>
+        <a href="admin-users.html" style="color:rgba(250,246,238,0.7);">ユーザー</a>
+        <a href="admin-products.html" style="color:rgba(250,246,238,0.7);">商品</a>
+        <a href="admin-journal.html" style="color:#FAF6EE;font-weight:700;">ジャーナル</a>
+        <a href="admin-payouts.html" style="color:rgba(250,246,238,0.7);">精算</a>
+        <a href="admin-analytics.html" style="color:rgba(250,246,238,0.7);">分析</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mvp-page">
+    <div class="container">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+        <div>
+          <span style="font-family:var(--font-hand);color:var(--accent-gold);font-size:13px;">— 運営管理 —</span>
+          <h1 style="font-family:var(--font-mincho);font-size:28px;color:var(--text-dark);margin-top:4px;">ジャーナル管理</h1>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;">
+
+        <!-- 記事一覧 -->
+        <div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>タイトル</th>
+                <th>カテゴリ</th>
+                <th>著者</th>
+                <th>公開日</th>
+                <th>ステータス</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;max-width:200px;">梅雨の晴れ間に愛でたい、うつわのある食卓</td>
+                <td style="font-size:12px;">うつわのある暮らし</td>
+                <td style="font-size:12px;">編集部</td>
+                <td style="font-size:12px;">2026/05/28</td>
+                <td><span class="status-badge published">公開</span></td>
+                <td><div class="row-actions"><button>編集</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;max-width:200px;">「染めること」が生き方になった — 藍染作家・青山遥</td>
+                <td style="font-size:12px;">作家インタビュー</td>
+                <td style="font-size:12px;">大野 梓</td>
+                <td style="font-size:12px;">2026/05/20</td>
+                <td><span class="status-badge published">公開</span></td>
+                <td><div class="row-actions"><button>編集</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;max-width:200px;">「轆轤（ろくろ）」ってどんな道具？陶芸の基礎知識</td>
+                <td style="font-size:12px;">ものづくり辞典</td>
+                <td style="font-size:12px;">編集部</td>
+                <td style="font-size:12px;">2026/05/10</td>
+                <td><span class="status-badge published">公開</span></td>
+                <td><div class="row-actions"><button>編集</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;max-width:200px;">父の日ギフト特集 — 手仕事で伝えるありがとう</td>
+                <td style="font-size:12px;">特集</td>
+                <td style="font-size:12px;">編集部</td>
+                <td style="font-size:12px;">—</td>
+                <td><span class="status-badge draft">下書き</span></td>
+                <td><div class="row-actions"><button>編集</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;max-width:200px;">夏の手仕事 — 浴衣とともに楽しむ竹細工</td>
+                <td style="font-size:12px;">特集</td>
+                <td style="font-size:12px;">大野 梓</td>
+                <td style="font-size:12px;">2026/04/01</td>
+                <td><span class="status-badge cancelled">非公開</span></td>
+                <td><div class="row-actions"><button>編集</button><button>公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 新規作成フォーム -->
+        <div class="form-card" style="margin-bottom:0;border:2px dashed var(--accent-gold);">
+          <h3 style="font-family:var(--font-mincho);font-size:18px;margin-bottom:20px;display:flex;align-items:center;gap:8px;">
+            <span style="background:var(--accent-gold);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;">＋</span>
+            新規記事を作成
+          </h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="form-field">
+              <label>タイトル</label>
+              <input type="text" placeholder="記事のタイトルを入力…" />
+            </div>
+            <div class="form-field">
+              <label>カテゴリ</label>
+              <select>
+                <option>うつわのある暮らし</option>
+                <option>作家インタビュー</option>
+                <option>ものづくり辞典</option>
+                <option>特集</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>アイキャッチ画像URL</label>
+              <input type="text" placeholder="https://…" />
+            </div>
+            <div class="form-field">
+              <label>本文</label>
+              <textarea rows="8" placeholder="記事の本文を入力…" style="padding:12px 14px;border:1.5px solid var(--paper-edge);border-radius:8px;background:var(--paper-warm);font-size:14px;color:var(--text-dark);outline:none;font-family:inherit;resize:vertical;"></textarea>
+            </div>
+            <div class="form-field">
+              <label>ステータス</label>
+              <select>
+                <option>下書き</option>
+                <option>公開</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" style="width:100%;padding:14px;">保存する</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
