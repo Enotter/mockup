@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>ログイン / 新規登録 — Enotter</title>
+  <title>メールを確認してください — Enotter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet" />
@@ -14,7 +14,7 @@
     <span class="demo-group">買い手</span>
     <a href="index.html">トップ</a><a href="products.html">商品一覧</a><a href="product-detail.html">商品詳細</a><a href="cart.html">カート</a><a href="checkout.html">購入手続き</a><a href="order-complete.html">注文完了</a><a href="order-detail.html">注文詳細</a><a href="favorites.html">お気に入り</a><a href="review-post.html">レビュー投稿</a><a href="mypage.html">マイページ</a><a href="mypage-profile.html">プロフィール編集</a><a href="mypage-addresses.html">住所帳</a><a href="messages.html">メッセージ</a><a href="artist.html">作家ページ</a>
     <span class="demo-group">認証</span>
-    <a href="login.html" class="current">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html">メール認証</a><a href="password-reset.html">パスワード再設定</a>
+    <a href="login.html">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html" class="current">メール認証</a><a href="password-reset.html">パスワード再設定</a>
     <span class="demo-group">作家</span>
     <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a>
     <span class="demo-group">規約</span>
@@ -28,7 +28,7 @@
         <span class="logo-text"><span class="logo-jp">Enotter</span></span>
       </a>
       <div></div>
-      <a href="index.html" style="font-size:13px;color:var(--text-mid);">← ホームへ戻る</a>
+      <a href="login.html" style="font-size:13px;color:var(--text-mid);">← ログインへ戻る</a>
     </div>
   </header>
 
@@ -42,7 +42,6 @@
           つくり手と、出会う場所へ。
         </div>
         <div class="author">— Enotter</div>
-
         <div style="margin-top:60px;display:flex;flex-direction:column;gap:14px;font-size:13px;">
           <div style="display:flex;gap:10px;align-items:center;"><span style="font-family:var(--font-hand);color:var(--accent-gold);font-size:18px;">01</span>3,200名以上の作家から、お気に入りを</div>
           <div style="display:flex;gap:10px;align-items:center;"><span style="font-family:var(--font-hand);color:var(--accent-gold);font-size:18px;">02</span>初回登録で500円分のクーポンプレゼント</div>
@@ -52,34 +51,49 @@
 
       <!-- Form Side -->
       <div class="auth-form-wrap">
-        <div class="auth-tabs">
-          <button class="active">ログイン</button>
-          <button>新規登録</button>
+
+        <!-- メールアイコン -->
+        <div style="text-align:center;margin-bottom:28px;">
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;background:var(--paper-warm);border-radius:50%;border:2px solid var(--paper-edge);margin-bottom:20px;">
+            <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="var(--wood-dark)" stroke-width="2">
+              <rect x="6" y="12" width="36" height="26" rx="3" ry="3"/>
+              <path d="M6 16 L24 28 L42 16" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h2 style="font-family:var(--font-mincho);font-size:22px;color:var(--text-dark);margin-bottom:8px;">メールを確認してください</h2>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">
+            ご登録のメールアドレスに確認メールをお送りしました。
+          </p>
         </div>
 
-        <h2>おかえりなさい</h2>
-        <p>ログインして、お気に入りの作品や作家とつながりましょう。</p>
-
-        <form class="auth-form">
-          <div class="form-field"><label>メールアドレス</label><input type="email" placeholder="your@email.com" /></div>
-          <div class="form-field"><label>パスワード</label><input type="password" placeholder="••••••••" /></div>
-
-          <div class="forgot"><a href="#">パスワードをお忘れですか？</a></div>
-
-          <button class="btn btn-primary auth-submit">ログイン</button>
-        </form>
-
-        <div class="divider">または</div>
-
-        <div class="sns-login">
-          <button class="sns-btn google"><span class="ico">G</span>Googleでログイン</button>
-          <button class="sns-btn apple"><span class="ico"></span>Appleでログイン</button>
-          <button class="sns-btn line"><span class="ico">L</span>LINEでログイン</button>
+        <div style="background:var(--paper-warm);border-radius:10px;padding:18px 20px;text-align:center;margin-bottom:24px;border:1px solid var(--paper-edge);">
+          <span style="font-size:11px;color:var(--text-light);display:block;margin-bottom:4px;">送信先</span>
+          <span style="font-size:15px;font-weight:700;color:var(--text-dark);">your@email.com</span>
         </div>
 
-        <p style="text-align:center;font-size:12px;color:var(--text-mid);margin-top:32px;">
-          はじめてのご利用ですか？  <a href="#" style="color:var(--accent-red);font-weight:700;text-decoration:underline;text-decoration-style:dotted;">新規登録はこちら →</a>
+        <button class="btn" style="width:100%;padding:14px;background:var(--paper-edge);color:var(--text-light);border:none;border-radius:8px;font-size:14px;cursor:not-allowed;margin-bottom:10px;" disabled>メールを確認する</button>
+        <p style="text-align:center;font-size:12px;color:var(--text-mid);margin-bottom:28px;">受信箱のリンクをクリックしてアカウントを有効化してください</p>
+
+        <div style="border-top:1px solid var(--paper-edge);padding-top:24px;">
+          <h3 style="font-size:14px;color:var(--text-dark);margin-bottom:12px;font-weight:700;">メールが届かない場合</h3>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+            <li style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--accent-gold);flex-shrink:0;">・</span>迷惑メールフォルダをご確認ください
+            </li>
+            <li style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--accent-gold);flex-shrink:0;">・</span>@enotter.jp からのメールを受信許可に設定してください
+            </li>
+            <li style="font-size:13px;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;">
+              <span style="color:var(--accent-gold);flex-shrink:0;">・</span>数分経っても届かない場合は再送をお試しください
+            </li>
+          </ul>
+          <button class="btn btn-outline" style="width:100%;padding:12px;">確認メールを再送する</button>
+        </div>
+
+        <p style="text-align:center;font-size:12px;color:var(--text-mid);margin-top:24px;">
+          <a href="login.html" style="color:var(--accent-red);text-decoration:underline;text-decoration-style:dotted;">← 別のメールアドレスで登録し直す</a>
         </p>
+
       </div>
     </div>
   </div>
