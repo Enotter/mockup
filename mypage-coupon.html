@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>クーポン — Enotter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Zen+Old+Mincho:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .coupon-input-row {
+      display: flex;
+      gap: 10px;
+    }
+    .coupon-input-row input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1.5px solid var(--paper-edge);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--paper-warm);
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .coupon-input-row input:focus {
+      border-color: var(--wood-mid);
+    }
+    .coupon-input-row input::placeholder {
+      color: var(--text-light);
+    }
+    .coupon-card {
+      background: linear-gradient(135deg, #B5523F, #8B3A29);
+      border-radius: 14px;
+      padding: 24px 28px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .coupon-card::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .coupon-card::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 40%;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .coupon-card .notch-left,
+    .coupon-card .notch-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--paper);
+    }
+    .coupon-card .notch-left { left: -10px; }
+    .coupon-card .notch-right { right: -10px; }
+    .coupon-card .coupon-left {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .coupon-card .coupon-right {
+      position: relative;
+      z-index: 1;
+      border-left: 1px dashed rgba(255,255,255,0.4);
+      padding-left: 20px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .coupon-code {
+      font-family: var(--font-hand);
+      font-size: 13px;
+      opacity: 0.85;
+      letter-spacing: 0.15em;
+      margin-bottom: 4px;
+    }
+    .coupon-discount {
+      font-family: var(--font-mincho);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .coupon-condition {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-bottom: 4px;
+    }
+    .coupon-expiry {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+    .coupon-use-btn {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      margin-top: 6px;
+      display: block;
+    }
+    .coupon-use-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .used-coupon-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--paper-edge);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+      opacity: 0.6;
+      position: relative;
+      overflow: hidden;
+    }
+    .used-coupon-card:last-child { margin-bottom: 0; }
+    .used-stamp {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%) rotate(-12deg);
+      border: 2px solid var(--text-light);
+      color: var(--text-light);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-family: var(--font-hand);
+    }
+    .used-coupon-code {
+      font-family: var(--font-hand);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-mid);
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+    .used-coupon-discount {
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+    .used-coupon-date {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+    .section-heading {
+      font-family: var(--font-mincho);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--paper-edge);
+    }
+    .panel h1 {
+      font-family: var(--font-mincho);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0 0 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-nav"><div class="container"><span class="demo-label">— MOCKUP PAGES —</span><nav class="demo-links">
+    <span class="demo-group">買い手</span>
+    <a href="index.html">トップ</a><a href="products.html">商品一覧</a><a href="search.html">検索結果</a><a href="product-detail.html">商品詳細</a><a href="cart.html">カート</a><a href="checkout.html">購入手続き</a><a href="order-complete.html">注文完了</a><a href="order-detail.html">注文詳細</a><a href="favorites.html">お気に入り</a><a href="review-post.html">レビュー投稿</a><a href="mypage.html">マイページ</a><a href="mypage-orders.html">注文履歴</a><a href="mypage-profile.html">プロフィール編集</a><a href="mypage-addresses.html">住所帳</a><a href="mypage-following.html">フォロー作家</a><a href="mypage-reviews.html">レビュー履歴</a><a href="mypage-coupon.html" class="current">クーポン</a><a href="mypage-payment.html">お支払い方法</a><a href="messages.html">メッセージ</a><a href="artists.html">作家一覧</a><a href="artist.html">作家ページ</a><a href="artist-products-list.html">作家作品一覧</a><a href="artist-reviews-list.html">作家レビュー一覧</a><a href="journal.html">ジャーナル</a><a href="journal-detail.html">ジャーナル詳細</a>
+    <span class="demo-group">認証</span>
+    <a href="login.html">ログイン</a><a href="signup.html">新規登録</a><a href="email-verify.html">メール認証</a><a href="password-reset.html">パスワード再設定</a>
+    <span class="demo-group">作家</span>
+    <a href="artist-signup.html">作家登録</a><a href="artist-dashboard.html">ダッシュボード</a><a href="product-new.html">出品</a><a href="product-edit.html">商品編集</a><a href="product-manage.html">商品管理</a><a href="order-manage.html">受注管理</a><a href="artist-order-detail.html">受注詳細</a><a href="artist-messages.html">作家メッセージ</a><a href="artist-profile-edit.html">プロフィール編集</a><a href="artist-payout.html">振込先設定</a><a href="artist-shop-edit.html">ショップ設定</a>
+    <span class="demo-group">作家登録フロー</span><a href="artist-signup-id.html">本人確認</a><a href="artist-signup-bank.html">振込先登録</a><a href="artist-signup-terms.html">規約同意</a><span class="demo-group">作家管理</span><a href="artist-pending-orders.html">未対応注文</a><a href="artist-reviews.html">レビュー一覧</a><a href="artist-notices.html">お知らせ</a><span class="demo-group">運営</span><a href="admin-dashboard.html">管理ダッシュボード</a><a href="admin-artist-review.html">作家審査</a><a href="admin-users.html">ユーザー管理</a><a href="admin-products.html">商品モデレーション</a><a href="admin-journal.html">ジャーナル管理</a><a href="admin-features.html">特集・バナー管理</a><a href="admin-payouts.html">精算管理</a><a href="admin-inquiries.html">お問い合わせ</a><a href="admin-analytics.html">分析・レポート</a><span class="demo-group">規約・その他</span>
+    <a href="terms.html">利用規約</a><a href="privacy.html">プライバシー</a><a href="tokushoho.html">特商法</a><a href="about.html">会社概要</a><a href="faq.html">FAQ</a><a href="contact.html">お問い合わせ</a><a href="404.html">404</a>
+  </nav></div></div>
+
+  <div class="utility-bar"><div class="container"><div class="utility-left"><span>送料無料キャンペーン実施中（5,000円以上のお買い物で）</span></div><div class="utility-right"><a href="faq.html">ヘルプ</a><a href="artist-signup.html">出品する</a><a href="login.html">ログアウト</a></div></div></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><svg viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="22" fill="#FAF6EE" stroke="#5C3A21" stroke-width="2"/><path d="M14 30 Q24 14 34 30" stroke="#5C3A21" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="24" cy="22" r="2.5" fill="#B5523F"/><path d="M18 34 L30 34" stroke="#5C3A21" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 3"/></svg></span>
+        <span class="logo-text"><span class="logo-jp">Enotter</span></span>
+      </a>
+      <form class="search"><input type="text" placeholder="作家名・作品名・キーワードで探す" /><button type="submit"><svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20 L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></form>
+      <nav class="header-icons">
+        <a href="favorites.html" class="icon-btn"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>お気に入り</span></a>
+        <a href="mypage.html" class="icon-btn"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>マイページ</span></a>
+        <a href="cart.html" class="icon-btn cart"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 4h3l3 12h10l3-9H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg><span>カート</span><span class="badge">3</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="mypage-banner">
+      <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80')"></div>
+      <div class="welcome">
+        <span class="greet">— WELCOME BACK —</span>
+        <h1>こんにちは、大谷 翔正さん</h1>
+        <p>今日も素敵な作品に出会えますように。</p>
+      </div>
+      <div class="stats">
+        <div><strong>12</strong><span>これまでの注文</span></div>
+        <div><strong>48</strong><span>お気に入り</span></div>
+        <div><strong>¥1,250</strong><span>ポイント残高</span></div>
+      </div>
+    </div>
+
+    <div class="mypage-layout">
+      <!-- Sidebar -->
+      <aside class="mypage-sidebar">
+        <ul>
+          <li><a href="mypage.html"><span class="ico">🏠</span>ダッシュボード</a></li>
+          <li><a href="mypage-orders.html"><span class="ico">📦</span>注文履歴</a></li>
+          <li><a href="favorites.html"><span class="ico">♡</span>お気に入り作品</a></li>
+          <li><a href="mypage-following.html"><span class="ico">★</span>フォロー作家</a></li>
+          <li><a href="mypage-reviews.html"><span class="ico">✎</span>レビュー履歴</a></li>
+          <li><a href="mypage-coupon.html" class="active"><span class="ico">🎫</span>クーポン</a></li>
+          <li><a href="messages.html"><span class="ico">📨</span>メッセージ <span style="margin-left:auto;background:var(--accent-red);color:white;border-radius:999px;padding:1px 8px;font-size:10px;">3</span></a></li>
+          <hr />
+          <li><a href="mypage-profile.html"><span class="ico">👤</span>プロフィール設定</a></li>
+          <li><a href="mypage-addresses.html"><span class="ico">📍</span>お届け先管理</a></li>
+          <li><a href="mypage-payment.html"><span class="ico">💳</span>お支払い方法</a></li>
+          <li><a href="mypage-profile.html"><span class="ico">⚙</span>各種設定</a></li>
+          <hr />
+          <li><a href="login.html" style="color:var(--accent-red);"><span class="ico">↪</span>ログアウト</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main -->
+      <div class="mypage-main">
+
+        <!-- クーポンコード入力 -->
+        <div class="panel">
+          <h1>クーポン</h1>
+          <div class="form-card" style="margin-bottom:0;">
+            <h3>クーポンコードを追加</h3>
+            <p class="form-card-desc">お持ちのクーポンコードを入力して適用してください。</p>
+            <div class="coupon-input-row">
+              <input type="text" placeholder="クーポンコードを入力…" />
+              <button class="btn btn-primary" style="padding:12px 28px;font-size:14px;">適用する</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 利用可能なクーポン -->
+        <div class="panel">
+          <div class="section-heading">利用可能なクーポン（3枚）</div>
+
+          <!-- クーポン1 -->
+          <div class="coupon-card">
+            <div class="notch-left"></div>
+            <div class="notch-right"></div>
+            <div class="coupon-left">
+              <div class="coupon-code">CLAY-2026</div>
+              <div class="coupon-discount">500円OFF</div>
+              <div class="coupon-condition">5,000円以上のご購入で</div>
+              <div class="coupon-expiry">有効期限：2026/06/30</div>
+            </div>
+            <div class="coupon-right">
+              <a href="products.html" class="coupon-use-btn">使用する →</a>
+            </div>
+          </div>
+
+          <!-- クーポン2 -->
+          <div class="coupon-card">
+            <div class="notch-left"></div>
+            <div class="notch-right"></div>
+            <div class="coupon-left">
+              <div class="coupon-code">WELCOME10</div>
+              <div class="coupon-discount">10%OFF</div>
+              <div class="coupon-condition">初回購入限定（上限2,000円）</div>
+              <div class="coupon-expiry">有効期限：2026/07/31</div>
+            </div>
+            <div class="coupon-right">
+              <a href="products.html" class="coupon-use-btn">使用する →</a>
+            </div>
+          </div>
+
+          <!-- クーポン3 -->
+          <div class="coupon-card" style="margin-bottom:0;">
+            <div class="notch-left"></div>
+            <div class="notch-right"></div>
+            <div class="coupon-left">
+              <div class="coupon-code">SUMMER500</div>
+              <div class="coupon-discount">500円OFF</div>
+              <div class="coupon-condition">対象商品1点以上で</div>
+              <div class="coupon-expiry">有効期限：2026/06/30</div>
+            </div>
+            <div class="coupon-right">
+              <a href="products.html" class="coupon-use-btn">使用する →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 使用済みクーポン -->
+        <div class="panel">
+          <div class="section-heading">使用済みクーポン</div>
+
+          <!-- 使用済み1 -->
+          <div class="used-coupon-card">
+            <div>
+              <div class="used-coupon-code">SPRING300</div>
+              <div class="used-coupon-discount">300円OFF</div>
+              <div class="used-coupon-date">使用日：2026/04/15</div>
+            </div>
+            <div class="used-stamp">使用済み</div>
+          </div>
+
+          <!-- 使用済み2 -->
+          <div class="used-coupon-card">
+            <div>
+              <div class="used-coupon-code">NEWUSER</div>
+              <div class="used-coupon-discount">初回1,000円OFF</div>
+              <div class="used-coupon-date">使用日：2026/03/01</div>
+            </div>
+            <div class="used-stamp">使用済み</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="container"><div class="footer-bottom" style="border:0;padding-top:0;"><span>© 2026 Enotter.</span></div></div></footer>
+
+</body>
+</html>
