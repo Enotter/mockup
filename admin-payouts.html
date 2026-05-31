@@ -45,156 +45,205 @@
   <div class="mvp-page">
     <div class="container">
 
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;gap:24px;">
         <div>
           <span style="font-family:var(--font-hand);color:var(--accent-gold);font-size:13px;">— 運営管理 —</span>
-          <h1 style="font-family:var(--font-mincho);font-size:28px;color:var(--text-dark);margin-top:4px;">売上・精算管理</h1>
+          <h1 style="font-family:var(--font-mincho);font-size:28px;color:var(--text-dark);margin-top:4px;">精算管理</h1>
+          <p style="font-size:13px;color:var(--text-mid);margin-top:4px;">評価投稿完了を条件に自動で売上を確定。毎月末に一括振込処理を行います。</p>
         </div>
         <div style="font-size:13px;color:var(--text-light);">対象月：<strong style="color:var(--text-dark);">2026年5月</strong></div>
       </div>
 
-      <!-- サマリカード -->
+      <!-- 自動精算ルール設定 -->
+      <div class="form-card" style="margin-bottom:28px;background:linear-gradient(135deg,#FAF6EE,#F5EDE0);border:1px solid var(--paper-edge);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;">
+          <div>
+            <h3 style="margin-bottom:4px;">自動精算ルール</h3>
+            <p style="font-size:13px;color:var(--text-mid);margin-bottom:0;">以下の条件が満たされた注文は、売上が作家の残高に自動で計上されます。</p>
+          </div>
+          <button class="btn btn-outline" style="font-size:12px;padding:8px 16px;white-space:nowrap;">ルールを編集</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;">
+          <div style="background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px;padding:18px 20px;">
+            <div style="font-size:11px;color:var(--accent-red);font-weight:700;letter-spacing:0.1em;margin-bottom:8px;">確定条件</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:4px;">評価投稿後に即時確定</div>
+            <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">購入者がレビューを投稿した時点で、該当注文の売上を自動的に作家残高へ計上します。</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px;padding:18px 20px;">
+            <div style="font-size:11px;color:var(--text-light);font-weight:700;letter-spacing:0.1em;margin-bottom:8px;">未評価の場合（フォールバック）</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:4px;">お届け完了から <span style="color:var(--accent-red);">14日後</span> に自動確定</div>
+            <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">購入者がレビューを投稿しない場合も、配送完了後14日で自動的に売上を確定します。</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--paper-edge);border-radius:10px;padding:18px 20px;">
+            <div style="font-size:11px;color:var(--text-light);font-weight:700;letter-spacing:0.1em;margin-bottom:8px;">振込タイミング</div>
+            <div style="font-size:14px;font-weight:700;color:var(--text-dark);margin-bottom:4px;">毎月末日に <span style="color:var(--accent-red);">一括振込</span></div>
+            <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">当月中に確定した売上を、月末に作家の登録口座へ自動振込。最低振込額は1,000円。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPIサマリ -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:28px;">
         <div class="kpi-card">
-          <span class="kpi-label">精算対象作家数</span>
-          <span class="kpi-value">28<span style="font-size:14px;color:var(--text-light);"> 名</span></span>
-          <span class="kpi-delta">振込待ち 22 / 保留 6</span>
+          <span class="kpi-label">今月の確定済み売上</span>
+          <span class="kpi-value" style="font-size:22px;">¥3,110,400</span>
+          <span class="kpi-delta up">自動確定済み</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-label">精算総額</span>
-          <span class="kpi-value" style="font-size:22px;">¥3,456,000</span>
-          <span class="kpi-delta">手数料控除前</span>
+          <span class="kpi-label">手数料控除後（振込額）</span>
+          <span class="kpi-value" style="font-size:22px;">¥2,799,360</span>
+          <span class="kpi-delta">手数料10%控除</span>
+        </div>
+        <div class="kpi-card alert">
+          <span class="kpi-label">要対応 / 保留案件</span>
+          <span class="kpi-value" style="color:var(--accent-red);">3<span style="font-size:14px;color:var(--text-light);"> 件</span></span>
+          <span class="kpi-delta">口座未登録・名義不一致</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-label">手数料総額（10%）</span>
-          <span class="kpi-value" style="font-size:22px;">¥345,600</span>
-          <span class="kpi-delta up">プラットフォーム収益</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-label">振込済み額（今月）</span>
-          <span class="kpi-value" style="font-size:22px;">¥0</span>
-          <span class="kpi-delta">6/30 振込予定</span>
+          <span class="kpi-label">次回振込予定日</span>
+          <span class="kpi-value" style="font-size:20px;">5/31</span>
+          <span class="kpi-delta">あと <strong>0</strong> 日</span>
         </div>
       </div>
 
       <!-- タブ -->
-      <div style="display:flex;gap:4px;margin-bottom:16px;border-bottom:2px solid var(--paper-edge);">
-        <a href="admin-payouts.html" style="padding:10px 20px;font-size:13px;font-weight:700;color:var(--accent-red);border-bottom:2px solid var(--accent-red);margin-bottom:-2px;text-decoration:none;">振込待ち <span style="background:var(--accent-red);color:#fff;font-size:10px;padding:1px 7px;border-radius:999px;margin-left:4px;">22</span></a>
-        <a href="#" style="padding:10px 20px;font-size:13px;color:var(--text-mid);text-decoration:none;">振込済み</a>
-        <a href="#" style="padding:10px 20px;font-size:13px;color:var(--text-mid);text-decoration:none;">保留 <span style="background:var(--paper-edge);color:var(--text-mid);font-size:10px;padding:1px 7px;border-radius:999px;margin-left:4px;">6</span></a>
+      <div style="display:flex;gap:0;border-bottom:2px solid var(--paper-edge);margin-bottom:20px;">
+        <button style="padding:10px 20px;background:none;border:0;border-bottom:2px solid var(--accent-red);color:var(--text-dark);font-weight:700;font-size:13px;cursor:pointer;margin-bottom:-2px;">精算ログ（自動）<span style="background:var(--paper-edge);color:var(--text-mid);font-size:10px;padding:1px 7px;border-radius:999px;margin-left:6px;">218</span></button>
+        <button style="padding:10px 20px;background:none;border:0;border-bottom:2px solid transparent;color:var(--text-mid);font-size:13px;cursor:pointer;">保留・要対応<span style="background:var(--accent-red);color:#fff;font-size:10px;padding:1px 7px;border-radius:999px;margin-left:6px;">3</span></button>
+        <button style="padding:10px 20px;background:none;border:0;border-bottom:2px solid transparent;color:var(--text-mid);font-size:13px;cursor:pointer;">振込履歴</button>
       </div>
 
-      <!-- 一括振込ボタン -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <span style="font-size:13px;color:var(--text-mid);"><input type="checkbox" style="margin-right:6px;accent-color:var(--wood-dark);" />全て選択</span>
-        <button class="btn btn-primary" style="font-size:13px;">選択した作家に振込処理</button>
+      <!-- 自動精算ログテーブル -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <span style="font-size:13px;color:var(--text-mid);">2026年5月の精算ログ — 計218件が自動確定済み</span>
+        <button class="btn btn-outline" style="font-size:12px;padding:8px 14px;">CSV出力</button>
       </div>
 
       <table class="data-table">
         <thead>
           <tr>
-            <th><input type="checkbox" style="accent-color:var(--wood-dark);" /></th>
+            <th>確定日時</th>
             <th>作家名</th>
-            <th>当月売上</th>
-            <th>手数料率</th>
-            <th>手数料額</th>
-            <th>振込額</th>
-            <th>振込先銀行</th>
-            <th>ステータス</th>
-            <th>操作</th>
+            <th>注文番号</th>
+            <th>確定理由</th>
+            <th>売上額</th>
+            <th>手数料（10%）</th>
+            <th>作家残高への加算</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/31 09:02</td>
             <td style="font-weight:700;">atelier mori</td>
-            <td style="font-weight:700;">¥184,200</td>
-            <td style="font-size:12px;color:var(--text-mid);">10%</td>
-            <td style="font-size:12px;color:var(--accent-red);">−¥18,420</td>
-            <td style="font-weight:700;color:var(--wood-dark);">¥165,780</td>
-            <td style="font-size:11px;color:var(--text-mid);">三菱UFJ銀行 渋谷支店</td>
-            <td><span class="status-badge new">振込待ち</span></td>
-            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0523-04812</td>
+            <td><span class="status-badge shipped" style="font-size:10px;">評価投稿</span></td>
+            <td>¥4,500</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥450</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥4,050</td>
           </tr>
           <tr>
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
-            <td style="font-weight:700;">陶工房 椿</td>
-            <td style="font-weight:700;">¥298,000</td>
-            <td style="font-size:12px;color:var(--text-mid);">10%</td>
-            <td style="font-size:12px;color:var(--accent-red);">−¥29,800</td>
-            <td style="font-weight:700;color:var(--wood-dark);">¥268,200</td>
-            <td style="font-size:11px;color:var(--text-mid);">岐阜銀行 多治見支店</td>
-            <td><span class="status-badge new">振込待ち</span></td>
-            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/31 08:54</td>
+            <td style="font-weight:700;">陶房 つきの</td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0523-04801</td>
+            <td><span class="status-badge shipped" style="font-size:10px;">評価投稿</span></td>
+            <td>¥8,000</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥800</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥7,200</td>
           </tr>
           <tr>
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
-            <td style="font-weight:700;">布工房 沙織</td>
-            <td style="font-weight:700;">¥122,400</td>
-            <td style="font-size:12px;color:var(--text-mid);">10%</td>
-            <td style="font-size:12px;color:var(--accent-red);">−¥12,240</td>
-            <td style="font-weight:700;color:var(--wood-dark);">¥110,160</td>
-            <td style="font-size:11px;color:var(--text-mid);">ゆうちょ銀行 四国支店</td>
-            <td><span class="status-badge new">振込待ち</span></td>
-            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/30 22:41</td>
+            <td style="font-weight:700;">革工房 KURUMI</td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0522-04788</td>
+            <td><span class="status-badge new" style="font-size:10px;">14日経過</span></td>
+            <td>¥9,800</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥980</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥8,820</td>
           </tr>
           <tr>
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
-            <td style="font-weight:700;">木工房 匠</td>
-            <td style="font-weight:700;">¥210,000</td>
-            <td style="font-size:12px;color:var(--text-mid);">10%</td>
-            <td style="font-size:12px;color:var(--accent-red);">−¥21,000</td>
-            <td style="font-weight:700;color:var(--wood-dark);">¥189,000</td>
-            <td style="font-size:11px;color:var(--text-mid);">静岡銀行 浜松支店</td>
-            <td><span class="status-badge new">振込待ち</span></td>
-            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/30 21:18</td>
+            <td style="font-weight:700;">Candle nico</td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0521-04752</td>
+            <td><span class="status-badge shipped" style="font-size:10px;">評価投稿</span></td>
+            <td>¥2,800</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥280</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥2,520</td>
           </tr>
           <tr>
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/30 19:05</td>
+            <td style="font-weight:700;">木工房 ひだまり</td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0521-04744</td>
+            <td><span class="status-badge shipped" style="font-size:10px;">評価投稿</span></td>
+            <td>¥16,500</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥1,650</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥14,850</td>
+          </tr>
+          <tr>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/30 14:33</td>
+            <td style="font-weight:700;">布もの店 こよみ</td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0520-04720</td>
+            <td><span class="status-badge new" style="font-size:10px;">14日経過</span></td>
+            <td>¥5,200</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥520</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥4,680</td>
+          </tr>
+          <tr>
+            <td style="font-size:12px;color:var(--text-mid);">2026/05/29 11:20</td>
             <td style="font-weight:700;">glass studio hana</td>
-            <td style="font-weight:700;">¥88,000</td>
-            <td style="font-size:12px;color:var(--text-mid);">10%</td>
-            <td style="font-size:12px;color:var(--accent-red);">−¥8,800</td>
-            <td style="font-weight:700;color:var(--wood-dark);">¥79,200</td>
-            <td style="font-size:11px;color:var(--text-mid);">沖縄銀行 那覇支店</td>
-            <td><span class="status-badge new">振込待ち</span></td>
-            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
-            <td style="font-weight:700;">藍染工房 青空</td>
-            <td style="font-weight:700;">¥156,500</td>
-            <td style="font-size:12px;color:var(--text-mid);">10%</td>
-            <td style="font-size:12px;color:var(--accent-red);">−¥15,650</td>
-            <td style="font-weight:700;color:var(--wood-dark);">¥140,850</td>
-            <td style="font-size:11px;color:var(--text-mid);">徳島銀行 徳島支店</td>
-            <td><span class="status-badge new">振込待ち</span></td>
-            <td><div class="row-actions"><button style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">振込処理</button><button>保留</button></div></td>
-          </tr>
-          <tr style="background:rgba(238,238,238,0.3);">
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
-            <td style="font-weight:700;color:var(--text-mid);">キャンドル工房 光</td>
-            <td style="font-weight:700;color:var(--text-mid);">¥42,000</td>
-            <td style="font-size:12px;color:var(--text-light);">10%</td>
-            <td style="font-size:12px;color:var(--text-light);">−¥4,200</td>
-            <td style="font-weight:700;color:var(--text-mid);">¥37,800</td>
-            <td style="font-size:11px;color:var(--text-light);">未登録</td>
-            <td><span class="status-badge cancelled">保留</span></td>
-            <td><div class="row-actions"><button>詳細確認</button></div></td>
-          </tr>
-          <tr style="background:rgba(238,238,238,0.3);">
-            <td><input type="checkbox" style="accent-color:var(--wood-dark);" /></td>
-            <td style="font-weight:700;color:var(--text-mid);">縫い人 さくら</td>
-            <td style="font-weight:700;color:var(--text-mid);">¥64,800</td>
-            <td style="font-size:12px;color:var(--text-light);">10%</td>
-            <td style="font-size:12px;color:var(--text-light);">−¥6,480</td>
-            <td style="font-weight:700;color:var(--text-mid);">¥58,320</td>
-            <td style="font-size:11px;color:var(--text-light);">口座名義不一致</td>
-            <td><span class="status-badge cancelled">保留</span></td>
-            <td><div class="row-actions"><button>詳細確認</button></div></td>
+            <td style="font-size:12px;color:var(--text-mid);">TI-2026-0519-04698</td>
+            <td><span class="status-badge shipped" style="font-size:10px;">評価投稿</span></td>
+            <td>¥7,400</td>
+            <td style="color:var(--accent-red);font-size:12px;">−¥740</td>
+            <td style="font-weight:700;color:var(--wood-dark);">+¥6,660</td>
           </tr>
         </tbody>
       </table>
+
+      <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:16px;">... 残り211件 / 次ページ →</p>
+
+      <!-- 保留案件（要対応） -->
+      <div style="margin-top:40px;">
+        <h3 style="font-family:var(--font-mincho);font-size:18px;color:var(--text-dark);margin-bottom:4px;display:flex;align-items:center;gap:10px;">
+          保留案件（手動対応が必要）
+          <span style="font-size:12px;background:var(--accent-red);color:#fff;padding:2px 10px;border-radius:999px;font-weight:700;">3件</span>
+        </h3>
+        <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px;">口座未登録・名義不一致などにより自動振込できなかった作家への対応が必要です。</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>作家名</th>
+              <th>振込対象月</th>
+              <th>振込予定額</th>
+              <th>保留理由</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#FFF5F5;">
+              <td style="font-weight:700;">キャンドル工房 光</td>
+              <td>2026年5月</td>
+              <td style="font-weight:700;">¥37,800</td>
+              <td><span style="font-size:12px;color:var(--accent-red);font-weight:600;">振込先口座 未登録</span></td>
+              <td><div class="row-actions"><button onclick="location.href='admin-users.html'">作家に連絡</button><button>詳細確認</button></div></td>
+            </tr>
+            <tr style="background:#FFF5F5;">
+              <td style="font-weight:700;">縫い人 さくら</td>
+              <td>2026年5月</td>
+              <td style="font-weight:700;">¥58,320</td>
+              <td><span style="font-size:12px;color:var(--accent-red);font-weight:600;">口座名義が登録名と不一致</span></td>
+              <td><div class="row-actions"><button onclick="location.href='admin-users.html'">作家に連絡</button><button>詳細確認</button></div></td>
+            </tr>
+            <tr style="background:#FFF5F5;">
+              <td style="font-weight:700;">陶工 山野辺</td>
+              <td>2026年5月</td>
+              <td style="font-weight:700;">¥24,300</td>
+              <td><span style="font-size:12px;color:var(--accent-red);font-weight:600;">返金・返品処理が完了していない注文あり</span></td>
+              <td><div class="row-actions"><button onclick="location.href='admin-inquiries.html'">問い合わせ確認</button><button>保留解除</button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
     </div>
   </div>
