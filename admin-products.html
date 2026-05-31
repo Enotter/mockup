@@ -74,6 +74,45 @@
         <span style="font-size:13px;color:var(--text-light);">全 8 件表示</span>
       </div>
 
+      <!-- 報告詳細パネル（テーブル上部に差し込み表示） -->
+      <div id="report-panel" style="display:none;border:2px solid var(--accent-red);border-radius:12px;background:#fff;margin-bottom:24px;overflow:hidden;">
+        <!-- パネルヘッダー -->
+        <div style="background:#FFF5F5;padding:16px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid #F5D0CC;">
+          <img id="rp-img" src="" style="width:64px;height:64px;border-radius:8px;object-fit:cover;" />
+          <div style="flex:1;">
+            <div style="font-size:11px;color:var(--accent-red);font-weight:700;letter-spacing:0.1em;margin-bottom:2px;">▲ 違反報告あり — 対応が必要です</div>
+            <div id="rp-name" style="font-family:var(--font-mincho);font-size:18px;font-weight:700;color:var(--text-dark);"></div>
+            <div id="rp-artist" style="font-size:12px;color:var(--text-mid);margin-top:2px;"></div>
+          </div>
+          <button onclick="closeReportPanel()" style="background:none;border:1px solid var(--paper-edge);border-radius:6px;padding:6px 12px;font-size:12px;color:var(--text-mid);cursor:pointer;">✕ 閉じる</button>
+        </div>
+
+        <div style="padding:24px;">
+
+          <!-- 報告一覧 -->
+          <h3 style="font-family:var(--font-mincho);font-size:15px;color:var(--text-dark);margin:0 0 12px;display:flex;align-items:center;gap:8px;">
+            <span style="background:var(--accent-red);color:#fff;font-size:11px;padding:2px 8px;border-radius:999px;" id="rp-count"></span>
+            報告一覧
+          </h3>
+
+          <div id="rp-reports" style="border:1px solid var(--paper-edge);border-radius:8px;overflow:hidden;margin-bottom:24px;">
+            <!-- 報告行はJSで挿入 -->
+          </div>
+
+          <!-- 対応操作 -->
+          <div style="background:var(--paper-warm);border-radius:8px;padding:16px 20px;">
+            <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:12px;">この商品への対応</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+              <button onclick="handleAction('unpublish')" style="background:var(--wood-dark);color:#fff;border:none;border-radius:6px;padding:9px 18px;font-size:13px;cursor:pointer;font-weight:600;">非公開にする</button>
+              <button onclick="handleAction('warn')" style="background:var(--accent-gold);color:#fff;border:none;border-radius:6px;padding:9px 18px;font-size:13px;cursor:pointer;font-weight:600;">作家に警告を送る</button>
+              <button onclick="handleAction('delete')" style="background:var(--accent-red);color:#fff;border:none;border-radius:6px;padding:9px 18px;font-size:13px;cursor:pointer;font-weight:600;">商品を削除</button>
+              <button onclick="handleAction('dismiss')" style="background:none;border:1px solid var(--paper-edge);border-radius:6px;padding:9px 18px;font-size:13px;cursor:pointer;color:var(--text-mid);">問題なし（報告を却下）</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <table class="data-table">
         <thead>
           <tr>
@@ -89,7 +128,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr style="background:#FFF5F5;">
+          <tr id="row-1" style="background:#FFF5F5;">
             <td><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=120&q=80" class="row-thumb" /></td>
             <td style="font-weight:700;">真鍮の三日月ピアス</td>
             <td style="font-size:12px;">atelier mori</td>
@@ -98,9 +137,9 @@
             <td style="font-size:12px;">2026/04/10</td>
             <td><span class="status-badge published">公開中</span></td>
             <td><span style="background:#FBF1EC;color:var(--accent-red);font-size:11px;padding:3px 10px;border-radius:999px;font-weight:700;">3件</span></td>
-            <td><div class="row-actions"><button>詳細</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+            <td><div class="row-actions"><button onclick="showReportPanel(1)" style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">報告を見る</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
           </tr>
-          <tr style="background:#FFF5F5;">
+          <tr id="row-2" style="background:#FFF5F5;">
             <td><img src="https://images.unsplash.com/photo-1605883705077-8d3d3cebe78c?auto=format&fit=crop&w=120&q=80" class="row-thumb" /></td>
             <td style="font-weight:700;">スモーキーキャンドルセット</td>
             <td style="font-size:12px;">キャンドル工房 光</td>
@@ -109,7 +148,7 @@
             <td style="font-size:12px;">2026/05/01</td>
             <td><span class="status-badge published">公開中</span></td>
             <td><span style="background:#FBF1EC;color:var(--accent-red);font-size:11px;padding:3px 10px;border-radius:999px;font-weight:700;">1件</span></td>
-            <td><div class="row-actions"><button>詳細</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
+            <td><div class="row-actions"><button onclick="showReportPanel(2)" style="background:var(--accent-red);color:#fff;border-color:var(--accent-red);">報告を見る</button><button>非公開</button><button style="color:var(--accent-red);">削除</button></div></td>
           </tr>
           <tr>
             <td><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=120&q=80" class="row-thumb" /></td>
@@ -182,6 +221,106 @@
 
     </div>
   </div>
+
+<script>
+const reportData = {
+  1: {
+    name: '真鍮の三日月ピアス',
+    artist: 'atelier mori',
+    img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=120&q=80',
+    count: 3,
+    reports: [
+      {
+        date: '2026/05/28 14:32',
+        user: 'u_tanaka_k',
+        category: '商品説明と異なる',
+        text: '写真では金色に見えますが、届いたものは全然色が違います。詐欺に近いと感じました。'
+      },
+      {
+        date: '2026/05/27 09:15',
+        user: 'u_sato_m88',
+        category: '知的財産権の侵害',
+        text: 'このデザインは私の作品と酷似しています。無断でコピーされている可能性があります。'
+      },
+      {
+        date: '2026/05/24 21:08',
+        user: 'u_yamada_r',
+        category: '商品説明と異なる',
+        text: 'サイズ表記が実際と異なります。ピアスポストの長さが記載より5mmほど短い。'
+      }
+    ]
+  },
+  2: {
+    name: 'スモーキーキャンドルセット',
+    artist: 'キャンドル工房 光',
+    img: 'https://images.unsplash.com/photo-1605883705077-8d3d3cebe78c?auto=format&fit=crop&w=120&q=80',
+    count: 1,
+    reports: [
+      {
+        date: '2026/05/30 16:44',
+        user: 'u_inoue_yuki',
+        category: '安全上の問題',
+        text: 'キャンドルを灯したところ、異常に強い刺激臭がしました。体調不良になったため報告します。材料の安全性を確認してほしいです。'
+      }
+    ]
+  }
+};
+
+const categoryColors = {
+  '商品説明と異なる':    { bg: '#EFF6FF', color: '#3B82F6' },
+  '知的財産権の侵害':   { bg: '#F5F3FF', color: '#7C3AED' },
+  '安全上の問題':       { bg: '#FFF5F5', color: '#B5523F' },
+  '禁止商品':           { bg: '#FEF3C7', color: '#92400E' },
+  'スパム・虚偽':       { bg: '#F0FDF4', color: '#15803D' }
+};
+
+function showReportPanel(id) {
+  const d = reportData[id];
+  const panel = document.getElementById('report-panel');
+
+  document.getElementById('rp-img').src = d.img;
+  document.getElementById('rp-name').textContent = d.name;
+  document.getElementById('rp-artist').textContent = '作家：' + d.artist;
+  document.getElementById('rp-count').textContent = d.count + '件の報告';
+
+  const container = document.getElementById('rp-reports');
+  container.innerHTML = d.reports.map((r, i) => {
+    const cat = categoryColors[r.category] || { bg: '#F3F4F6', color: '#374151' };
+    return `
+      <div style="padding:16px 20px;${i < d.reports.length - 1 ? 'border-bottom:1px solid var(--paper-edge);' : ''}display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:start;">
+        <div>
+          <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">報告日時</div>
+          <div style="font-size:13px;font-weight:600;color:var(--text-dark);">${r.date}</div>
+          <div style="font-size:11px;color:var(--text-light);margin-top:8px;margin-bottom:4px;">報告者</div>
+          <div style="font-size:12px;color:var(--text-mid);font-family:monospace;">${r.user}</div>
+        </div>
+        <div>
+          <span style="display:inline-block;background:${cat.bg};color:${cat.color};font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:8px;">${r.category}</span>
+          <div style="font-size:13px;color:var(--text-dark);line-height:1.7;background:var(--paper);padding:10px 14px;border-radius:6px;border-left:3px solid ${cat.color};">${r.text}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function closeReportPanel() {
+  document.getElementById('report-panel').style.display = 'none';
+}
+
+function handleAction(action) {
+  const messages = {
+    unpublish: '商品を非公開にしました。作家にはシステム通知が送られます。',
+    warn:      '作家に警告メッセージを送信しました。',
+    delete:    '商品を削除しました。',
+    dismiss:   '報告を却下しました。この商品の報告フラグをクリアしました。'
+  };
+  alert(messages[action]);
+  closeReportPanel();
+}
+</script>
 
 </body>
 </html>
